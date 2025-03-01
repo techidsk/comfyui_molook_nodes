@@ -27,12 +27,12 @@ dev = [
 ]
 
 [project.urls]
-bugs = "https://github.com/ecpknymt/comfyui_molook_nodes/issues"
-homepage = "https://github.com/ecpknymt/comfyui_molook_nodes"
+bugs = "https://github.com/techidsk/comfyui_molook_nodes/issues"
+homepage = "https://github.com/techidsk/comfyui_molook_nodes"
 
 
 [tool.comfy]
-PublisherId = "ecpknymt"
+PublisherId = "techidsk"
 DisplayName = "ComfyUI-molook-nodes"
 Icon = ""
 
