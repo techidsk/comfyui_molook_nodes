@@ -100,3 +100,5 @@ cookiecutter-pypackage-env/
 *.code-workspace
 
 *.zip
+
+.vscode/
