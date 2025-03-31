@@ -101,18 +101,16 @@ class ImageOutpaintPadding:
         bg_color = torch.tensor(
             [color_r, color_g, color_b], dtype=torch.float32, device=image.device
         )
-        
+
         # Create a new padded image filled with the background color
         padded_image = torch.ones(
-            (batch_size, new_h, new_w, channels), 
-            dtype=image.dtype, 
-            device=image.device
+            (batch_size, new_h, new_w, channels), dtype=image.dtype, device=image.device
         )
-        
+
         # Fill with background color (safely)
         for c in range(channels):
             padded_image[..., c] = bg_color[c]
-        
+
         # Create a mask to indicate padded areas (1 for padding, 0 for original image)
         mask = torch.ones((batch_size, 1, new_h, new_w), device=image.device)
 
@@ -145,10 +143,12 @@ class ImageOutpaintPadding:
             pad_right = pad_w - pad_left
 
         # Place the original image in the padded canvas (copy, not in-place)
-        padded_image[:, pad_top:pad_top+orig_h, pad_left:pad_left+orig_w, :] = image.clone()
-        
+        padded_image[:, pad_top : pad_top + orig_h, pad_left : pad_left + orig_w, :] = (
+            image.clone()
+        )
+
         # Set the mask values (0 for original image area)
-        mask[:, :, pad_top:pad_top+orig_h, pad_left:pad_left+orig_w] = 0
+        mask[:, :, pad_top : pad_top + orig_h, pad_left : pad_left + orig_w] = 0
 
         return (padded_image, mask)
 
